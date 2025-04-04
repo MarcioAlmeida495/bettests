@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    font-family: 'Quicksand';
+}
+html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    height: 100%;
+    width: 100%;
+}
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/* Estilizando a barra de rolagem para navegadores Webkit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Cor de fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.9);
+    background: rgba(0,0,0,0.7);
+    background: linear-gradient(45deg,  #aaa, #ccc, #aaa);
+}
+
+/* Cor da alça da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+}
+
+/* Cor da alça ao passar o mouse */
+::-webkit-scrollbar-thumb:hover {
+    background: black;
+}
