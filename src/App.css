@@ -53,3 +53,15 @@
   background-position: center;
   z-index: -1;
 }
+@media (max-width: 600px) {
+  .beforebody{
+    padding: 0px;
+  }
+  .body{
+    padding: 0px;
+    padding-bottom: 20px;
+  }
+  .body::before{
+    width: 100%;
+  }
+}
