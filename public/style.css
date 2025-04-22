@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0px;
     font-family: 'Quicksand';
+    color: white;
 }
 html{
     height: 100%;
@@ -16,6 +17,7 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+
 
 /* Estilizando a barra de rolagem para navegadores Webkit (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {

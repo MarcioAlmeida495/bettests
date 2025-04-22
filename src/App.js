@@ -2,7 +2,7 @@ import './App.css';
 import { QrCode } from './components/QrCode';
 
 function App() {
-  return <div className='beforebody'>
+  return <div className='beforebody' >
 
   <div className={'body'}>
     <QrCode />

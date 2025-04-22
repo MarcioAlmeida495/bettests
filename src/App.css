@@ -3,10 +3,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 20px;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0);
+  background-color: black;
   justify-content: end;
   align-items: center;
   overflow: hidden;
@@ -19,40 +18,89 @@
   border: 1px solid rgba(0,0,0,0.1);
   background-color: rgba(255,255,255,0.1);
   border-radius: 3px;
+  transition: transform 50ms;
 }
 
 .buttonCopy:hover{
   background-color: rgba(0,0,0,0.05);
-
+  cursor: pointer;
+  border: 1px solid white;
+  transform: scale(1.05);
 }
 .beforebody{
   box-sizing: border-box;
-  padding: 30px;
   width: 100%;
+  padding: 10px;
+  padding-bottom: 20px;
+  min-width: 500px;
   height: 100vh;
-  position: absolute;
-  background-color: white;
+  position: relative;
+  background-color: black;
   z-index: -0;
 }
-
-.body::before {
-  content: "";
+.imaged {
   position: absolute;
   top: 0;
   left: 50%;
+  max-width: 600px;
   transform: translateX(-50%);
-  width: 80%;
-  max-width: 500px;
+  width: 100%;
   height: 100%;
   background-color: black;
-  background-image: 
-    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,0), rgba(255, 255, 255, 0.5),  rgba(255, 255, 255, 1)),
-    url('../public/images/bg.png');
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  z-index: -2;
+}
+
+.imaged::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  pointer-events: none; /* permite clicar nos elementos abaixo */
+  z-index: 1;
+}
+
+.imageWrapper {
+  position: absolute;
+  max-width: 600px;
+  width: 100%;
+  height: 100vh;
   z-index: -1;
 }
+
+.imageWrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(120% + 20px);
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0), rgba(0,0,0,0),rgba(0,0,0,1));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.imgReal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  max-width: 600px;
+  transform: translateX(-50%);
+  width: 100%;
+  background-color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid black ;
+  z-index: -2;
+}
+
+
 @media (max-width: 600px) {
   .beforebody{
     padding: 0px;
@@ -60,8 +108,6 @@
   .body{
     padding: 0px;
     padding-bottom: 20px;
-  }
-  .body::before{
-    width: 100%;
+
   }
 }
