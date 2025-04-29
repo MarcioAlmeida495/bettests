@@ -34,7 +34,16 @@ export const QrCode = () => {
     {/* <img alt="" className="imaged" src="images/bg.png"/> */}
     <img alt='pix' width={'100px'} src={`images/qrcode.png`}/>
     <br />
-    <h3>QR code para Arrecadação de Fundos para o Casamento.</h3>
+    <div style={{width: '300px'}}>
+    <h3>
+      Presenteie com PIX
+      </h3>
+    <p>
+    Se quiser nos presentear com algo especial, preparamos um QR Code exclusivo para PIX.
+    Qualquer valor será recebido com muito carinho e gratidão.
+    </p>
+
+    </div>
     <br />
         <button className="buttonCopy" onClick={()=>{copiarTexto(code); setClicked(true)}}>Clique Aqui para Copiar o Código.</button>
         {clicked && <span style={{position:'absolute', bottom: '-20px'}}>Código Copiado</span>}
