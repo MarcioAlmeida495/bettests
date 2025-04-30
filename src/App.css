@@ -87,6 +87,17 @@
   z-index: 1;
 }
 
+.qrcode.extraWidth{
+  width: 100px;
+  transition: width 200ms ease;
+}
+.qrcode:hover{
+  cursor: pointer;
+}
+.qrcode{
+  width: 30px;
+  transition: width 200ms ease;
+}
 .imgReal {
   position: absolute;
   top: 0;

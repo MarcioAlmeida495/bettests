@@ -15,6 +15,7 @@ export const QrCode = () => {
     const code = '00020126330014BR.GOV.BCB.PIX0111118727966805204000053039865802BR5924Beatriz Vitoria Ferreira6009SAO PAULO62140510vtz3l6j4gu6304C3E0';
     const [clicked, setClicked] = useState(false);
     const [changeImg, setChangeImg] = useState(0);
+    const [isExtra, setIsExtra] = useState(false);
     useEffect(()=>{
       setTimeout(() => {
         setChangeImg(img => (img+1)%6);
@@ -32,7 +33,7 @@ export const QrCode = () => {
     </div>
 
     {/* <img alt="" className="imaged" src="images/bg.png"/> */}
-    <img alt='pix' width={'100px'} src={`images/qrcode.png`}/>
+    
     <br />
     <div style={{width: '300px'}}>
     <h3>
@@ -45,7 +46,17 @@ export const QrCode = () => {
 
     </div>
     <br />
-        <button className="buttonCopy" onClick={()=>{copiarTexto(code); setClicked(true)}}>Clique Aqui para Copiar o Código.</button>
-        {clicked && <span style={{position:'absolute', bottom: '-20px'}}>Código Copiado</span>}
-    </div>
+    <img onClick={()=>{
+      if(!isExtra)copiarTexto(code); setClicked(true);
+      setIsExtra(!isExtra);
+
+    }} alt='pix' className={`qrcode ${isExtra ? 'extraWidth' : ''}`} src={`images/qrcode.png`}/>
+        <br/>
+        <p>clique no qr code para copiar e expandir</p>
+        <br />
+        {clicked && <p style={{position: 'absolute', bottom: '45px'}}>
+            Link Copiado!
+        </p>}
+
+      </div>
 }
