@@ -67,14 +67,6 @@
   z-index: 1;
 }
 
-.imageWrapper {
-  position: absolute;
-  max-width: 600px;
-  width: 100%;
-  height: 100vh;
-  z-index: -1;
-}
-
 .imageWrapper::before {
   content: '';
   position: absolute;
@@ -85,6 +77,33 @@
   background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,0.5) ,rgba(0,0,0,1));
   pointer-events: none;
   z-index: 1;
+}
+.imageWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.imgReal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  background-color: black;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1500ms ease-in-out;
+  z-index: -2;
+}
+
+.imgReal.active {
+  opacity: 1;
+  z-index: -1;
 }
 
 .qrcode.extraWidth{
@@ -97,22 +116,6 @@
 .qrcode{
   width: 30px;
   transition: width 200ms ease;
-}
-.imgReal {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  max-width: 400px;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: 2px solid black;
-  z-index: -2;
-  object-fit: cover; /* ou "contain" se quiser mostrar tudo */
 }
 
 

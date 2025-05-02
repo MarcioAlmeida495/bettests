@@ -27,10 +27,17 @@ export const QrCode = () => {
             setClicked(false);
         }, 1000);}
       },[clicked])
-    return <div style={{display:'flex', position: 'relative', flexDirection: 'column', height: '100vh', justifyContent: 'end', alignItems: 'center', textAlign: 'center', zIndex: '5', padding: '40px', paddingTop: '100px', paddingBottom: '50px'}}>
+    return <div style={{display:'flex', width: '100%',position: 'relative', flexDirection: 'column', height: '100vh', justifyContent: 'end', alignItems: 'center', textAlign: 'center', zIndex: '5', padding: '40px', paddingTop: '100px', paddingBottom: '50px'}}>
     <div className="imageWrapper">
-      <img alt='' src={`images/biia${changeImg}.jpg`} className="imgReal" />
-    </div>
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+            <img
+              key={i}
+              alt=""
+              src={`images/biia${i}.jpg`}
+              className={`imgReal ${changeImg === i ? 'active' : ''}`}
+            />
+          ))}
+        </div>
 
     {/* <img alt="" className="imaged" src="images/bg.png"/> */}
     
