@@ -1,0 +1,55 @@
+.upphotos {
+    display: flex;  /* Certifique-se de que o elemento seja um bloco */
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 100%; 
+    position: absolute;
+    margin-left: 100%;
+    top: 0;
+    opacity: 0;
+    overflow: hidden; /* Para esconder o conteúdo enquanto anima */
+    transition: width 1s ease, opacity 2s ease, margin 1s ease;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.9);
+    padding: 50px 30px;
+    gap: 10px;
+}
+@media (max-width: 400px) {
+    .upphotos{
+        padding: 40px 10px;
+    }
+}
+.upphotos.expanded {
+    opacity: 100%;
+    left: 0;
+    margin-left: 0;
+}
+
+.buttonUploadPhoto{
+    display: flex;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    
+}
+.buttonUploadPhoto:hover{
+    border: 1px solid rgba(0,0,0,0);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 10px;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  

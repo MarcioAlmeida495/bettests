@@ -1,0 +1,85 @@
+.App {
+  text-align: center;
+}
+*{
+  box-sizing: border-box;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+}
+.App {
+  padding: 20px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.img-preview {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid rgba(150,150,150,0.5);
+  margin: 8px;
+  transition: all 200ms ease;
+}
+.img-preview:hover{
+  transform: scale(1.05);
+}
+.gallery {
+  height: 80%;
+  max-width: 600px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: all 200ms ease;
+  gap: 10px;
+}
+
+.gallery:hover{
+  height: 100%;
+}
+/* Scrollbar estilizada: dourado, branco e preto */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000; /* Branco */
+  border-left: 2px solid #000; /* Preto */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffd700, #daa520);
+  border-radius: 2px;
+  border: 2px solid #000; /* Contorno preto elegante */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ffd700, #daa520); /* Dourado mais vivo ao passar o mouse */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #daa520 rgba(0,0,0,0.5);
+}
+.progress{
+  display: flex;
+  height: 60px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
