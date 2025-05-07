@@ -8,7 +8,7 @@ function App() {
   return <div className='background'>
 
   <div style={{maxWidth: 600, width: '100%',position: 'relative'}}>
-
+  
   <button className={`homefoto ${clicked ? '' : 'changepos'}`} onClick={()=>{setClicked(!clicked)}}>{clicked ? 'Home' : 'Fotos'}</button>
   { <QrCode />}
     <UploadPhotos className={`upphotos ${clicked ? 'expanded' : ''}`}/>
