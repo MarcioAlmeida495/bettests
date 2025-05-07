@@ -69,7 +69,8 @@ export const FirebaseUploads = () => {
   };
   
   const loadImages = async () => {
-    getImageURLs();
+    const urls = await getImageURLs();
+    console.log('-->>',urls)
     const imagesRef = ref(storage, 'images/');
     try {
       console.log('clicked')
@@ -87,7 +88,7 @@ export const FirebaseUploads = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} style={{height: 300, width: '100%'}}>
+      <form onSubmit={handleSubmit} style={{height: 200, width: '150px'}}>
         
         <UploadPreview reset={`${progress === 100 ? true : false}`} getSelectedImage={(file)=>{setFileSelected(file)}}/>
         {fileSelected && !progress && <button  onClick={()=>{setClicked(true)}} type="submit">Enviar</button>}
