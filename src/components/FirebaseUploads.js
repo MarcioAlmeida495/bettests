@@ -8,9 +8,10 @@ import {
 import { storage } from './firebase';
 import './App.css';
 import { UploadPreview } from './SelectImage';
+import { GalleryPhotos } from './GalleryPhotos';
 
 export async function getImageURLs() {
-  const listRef = ref(storage, 'images/');
+  const listRef = ref(storage, 'betphotos/');
   const result = await listAll(listRef);
   
   const urlPromises = result.items.map((itemRef) => getDownloadURL(itemRef));
@@ -49,7 +50,7 @@ export const FirebaseUploads = () => {
     const file = event.target[0]?.files[0];
     if (!file) return;
 
-    const storageRef = ref(storage, `images/${file.name}`);
+    const storageRef = ref(storage, `betphotos/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -71,7 +72,7 @@ export const FirebaseUploads = () => {
   const loadImages = async () => {
     const urls = await getImageURLs();
     console.log('-->>',urls)
-    const imagesRef = ref(storage, 'images/');
+    const imagesRef = ref(storage, 'betphotos/');
     try {
       console.log('clicked')
       console.log(imagesRef)
@@ -107,11 +108,13 @@ export const FirebaseUploads = () => {
 
       <button onClick={loadImages}>Atualizar</button>
 
-      <div className="gallery">
+      <GalleryPhotos images={images}/>
+      
+      {/* <div className="gallery">
         {images.map((url, i) => (
           <img key={i} src={url} alt={`img-${i}`} className="img-preview" />
         ))}
-      </div>
+      </div> */}
     </>
   );
 }
