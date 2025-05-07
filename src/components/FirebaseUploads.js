@@ -95,9 +95,8 @@ export const FirebaseUploads = () => {
         {fileSelected && !progress && <button  onClick={()=>{setClicked(true)}} type="submit">Enviar</button>}
       </form>
       <div className='progress'>
-
-      {progress===100 && <span>Foto Enviada</span>}
-      {clicked && <progress value={progress} max={100} />}
+        {clicked && <progress value={progress} max={100} />}
+        {progress===100 && <span>Foto Enviada</span>}
       </div>
       {imgURL && (
         <div>

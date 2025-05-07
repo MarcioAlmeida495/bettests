@@ -6,7 +6,7 @@ import "./styles.css"; // certifique-se que aqui tenha o CSS de grid
 export const GalleryPhotos = ({images}) => {
   const [modalInfo, setModalInfo] = useState(null);
   return <>
-    {images && <div>
+    {images && <>
       {modalInfo && <div className="modalbackground">
         <div className="modal">
           <img src={modalInfo} alt="modaled"/>
@@ -21,6 +21,6 @@ export const GalleryPhotos = ({images}) => {
           </div>
         })}
       </div>
-    </div>}
+    </>}
         </>
 };
