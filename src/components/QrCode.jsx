@@ -32,7 +32,17 @@ export const QrCode = () => {
     <div className={'body'}>
     
     
-    <div style={{display:'flex', width: '100%',position: 'relative', flexDirection: 'column', height: '100vh', justifyContent: 'end', alignItems: 'center', textAlign: 'center', zIndex: '5', padding: '40px', paddingTop: '100px', paddingBottom: '50px'}}>
+    <div style={{
+      display:'flex',
+      width: '100%',
+      position: 'relative',
+      flexDirection: 'column',
+      height: '100vh',
+      justifyContent: 'end',
+      alignItems: 'center',
+      textAlign: 'center',
+      zIndex: '5',
+      paddingTop: '100px'}}>
     <div className="imageWrapper">
           {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
             <img
@@ -58,10 +68,12 @@ export const QrCode = () => {
 
     </div>
     <br />
+    <div style={{marginBottom: '50px'}}>
+
     <img onClick={()=>{
       if(!isExtra)copiarTexto(code); setClicked(true);
       setIsExtra(!isExtra);
-
+      
     }} alt='pix' className={`qrcode ${isExtra ? 'extraWidth' : ''}`} src={`images/qrcode.png`}/>
         <br/>
         <p>clique no qr code para copiar e expandir</p>
@@ -70,6 +82,7 @@ export const QrCode = () => {
             Link Copiado!
         </p>}
 
+    </div>
       </div>
       
       </div>
