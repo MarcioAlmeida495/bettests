@@ -22,6 +22,7 @@ export const QrCode = () => {
         console.log(changeImg);
       }, 2000);
     },[changeImg])
+    
     useEffect(()=>{
         if(clicked){setTimeout(() => {
             setClicked(false);
@@ -68,7 +69,7 @@ export const QrCode = () => {
 
     </div>
     <br />
-    <div style={{marginBottom: '50px'}}>
+    <div style={{marginBottom: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
 
     <img onClick={()=>{
       if(!isExtra)copiarTexto(code); setClicked(true);
