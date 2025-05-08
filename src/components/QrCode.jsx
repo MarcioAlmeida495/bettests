@@ -69,7 +69,7 @@ export const QrCode = () => {
 
     </div>
     <br />
-    <div style={{marginBottom: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+    <div style={{marginBottom: '100px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
 
     <img onClick={()=>{
       if(!isExtra)copiarTexto(code); setClicked(true);
