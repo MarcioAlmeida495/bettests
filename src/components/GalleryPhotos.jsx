@@ -1,43 +1,64 @@
-import React, { useEffect, useState } from "react";
-import { storage } from "./firebase";
-import { listAll, getDownloadURL, ref } from "firebase/storage";
-import "./styles.css"; // certifique-se que aqui tenha o CSS de grid
+import React, { useEffect, useMemo, useState } from "react";
+import "./styles.css";
 
-export const GalleryPhotos = ({images}) => {
+export const GalleryPhotos = ({ images }) => {
   const [showModal, setShowModal] = useState(false);
   const [slideMode, setSlideMode] = useState(false);
   const [photoIndex, setPhotoIndex] = useState();
 
-  useEffect(()=>{
-    console.log(`slidemode: ${slideMode}, url: ${images[photoIndex]}`)
-    if(slideMode){
-      setTimeout(() => {
-        setPhotoIndex(pI => (pI+1)%images.length);
+  useEffect(() => {
+    if (slideMode) {
+      const timer = setTimeout(() => {
+        setPhotoIndex(pI => (pI + 1) % images.length);
       }, 3000);
+      return () => clearTimeout(timer); // limpa timeout se slideMode mudar
     }
-  },[photoIndex, images, slideMode])
+  }, [photoIndex, images, slideMode]);
 
-  useEffect(()=>{
-    if(!showModal)setSlideMode(false);
-  }, [showModal])
+  useEffect(() => {
+    if (!showModal) setSlideMode(false);
+  }, [showModal]);
 
-  return <>
-    {images && <>
-      {showModal && <div className="modalbackground">
-          <button className="close-btn" onClick={()=>{setShowModal(false)}}>Fechar</button>
-          <button className="slidemode-btn" onClick={()=>{setSlideMode(!slideMode)}}>{`${slideMode ? 'Desativar' : 'Ativar'}`} modo Slide</button>
-        <div className="modal">
-          <img src={images[photoIndex]} alt="modaled"/>
-        </div>
-      </div>}
-      <div className="gallery-grid">
-        {images.map((url, index) => {
-          console.log(url)
-          return <div key={index} className="image-container">
-            <img src={url} onClick={()=>{setShowModal(true); setPhotoIndex(index)}} alt={`Imagem ${index}`} />
-          </div>
-        })}
+  // Memoriza a renderização da grade
+  const galleryGrid = useMemo(() => {
+    if (!images) return null;
+    return images.map((url, index) => (
+      <div key={index} className="image-container">
+        <img
+          src={url}
+          onClick={() => {
+            setShowModal(true);
+            setPhotoIndex(index);
+          }}
+          alt={`Imagem ${index}`}
+        />
       </div>
-    </>}
+    ));
+  }, [images]);
+
+  return (
+    <>
+      {images && (
+        <>
+          {showModal && (
+            <div className="modalbackground">
+              <button className="close-btn" onClick={() => setShowModal(false)}>
+                Fechar
+              </button>
+              <button
+                className="slidemode-btn"
+                onClick={() => setSlideMode(!slideMode)}
+              >
+                {slideMode ? "Desativar" : "Ativar"} modo Slide
+              </button>
+              <div className="modal">
+                <img src={images[photoIndex]} alt="modaled" />
+              </div>
+            </div>
+          )}
+          <div className="gallery-grid">{galleryGrid}</div>
         </>
+      )}
+    </>
+  );
 };
