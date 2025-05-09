@@ -91,7 +91,10 @@ export const FirebaseUploads = () => {
   };
 
   return (
-    <>
+    <div className='photos'>
+        <button onClick={()=>{
+          document.getElementsByClassName('admindiv')[0].classList.toggle('expandedadmindiv')
+        }} style={{position: 'absolute', top: 0, right: 0, zIndex: 901}}></button>
       <div className='admindiv'>
         <input style={
           {
@@ -100,9 +103,6 @@ export const FirebaseUploads = () => {
             color: 'black'
           }
         } type='password' onChange={(e)=>{setPass(e.target.value); console.log(e.target.value)}} value={pass}/>
-        <button onClick={()=>{
-          document.getElementsByClassName('admindiv')[0].classList.toggle('expandedadmindiv')
-        }} style={{position: 'fixed', top: 0, right: 0}}></button>
       </div>
       <form onSubmit={handleSubmit} style={{height: 200, width: '150px'}}>
         
@@ -122,14 +122,14 @@ export const FirebaseUploads = () => {
 
       <button onClick={LoadImages}>Atualizar</button>
 
-      <GalleryPhotos images={images} admin={pass === password}/>
+      <GalleryPhotos imagesUrls={images} admin={pass === password}/>
       
       {/* <div className="gallery">
         {images.map((url, i) => (
           <img key={i} src={url} alt={`img-${i}`} className="img-preview" />
         ))}
       </div> */}
-    </>
+    </div>
   );
 }
 

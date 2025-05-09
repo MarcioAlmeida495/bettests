@@ -1,10 +1,11 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./styles.css";
 
-export const GalleryPhotos = ({ images, admin }) => {
+export const GalleryPhotos = ({ imagesUrls, admin }) => {
   const [showModal, setShowModal] = useState(false);
   const [slideMode, setSlideMode] = useState(false);
   const [photoIndex, setPhotoIndex] = useState();
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     if (slideMode) {
@@ -15,6 +16,10 @@ export const GalleryPhotos = ({ images, admin }) => {
     }
   }, [photoIndex, images, slideMode]);
 
+  useEffect(()=>{
+    if(imagesUrls)setImages(imagesUrls.slice().reverse());
+  },[imagesUrls])
+
   useEffect(() => {
     if (!showModal) setSlideMode(false);
   }, [showModal]);
@@ -22,7 +27,7 @@ export const GalleryPhotos = ({ images, admin }) => {
   // Memoriza a renderização da grade
   const galleryGrid = useMemo(() => {
     if (!images) return null;
-    return images.slice().reverse().map((url, index) => (
+    return images.map((url, index) => (
       <div key={index} className="image-container">
         <img
           src={url}

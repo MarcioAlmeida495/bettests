@@ -79,7 +79,7 @@ export const QrCode = () => {
         <br/>
         <p>clique no qr code para copiar e expandir</p>
         <br />
-        {clicked && <p style={{position: 'absolute', bottom: '45px'}}>
+        {clicked && <p style={{position: 'absolute', bottom: '100px'}}>
             Link Copiado!
         </p>}
 

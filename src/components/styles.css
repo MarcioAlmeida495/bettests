@@ -4,6 +4,7 @@
     /* justify-content: center; */
     align-items: center;
     width: 100%; 
+    max-width: 600px;
     position: absolute;
     margin-left: 100%;
     top: 0;
@@ -12,7 +13,7 @@
     transition: width 1s ease, opacity 2s ease, margin 1s ease;
     height: 100vh;
     background-color: rgba(0,0,0,0.9);
-    padding: 50px 30px;
+
     gap: 10px;
 }
 @media (max-width: 400px) {
@@ -24,6 +25,14 @@
     opacity: 100%;
     left: 0;
     margin-left: 0;
+}
+.photos{
+  position: relative;
+  width: 100%;
+  padding: 50px 1.2rem 10px 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .buttonUploadPhoto{
