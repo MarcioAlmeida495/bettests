@@ -9,9 +9,10 @@ import { storage } from './firebase';
 import './App.css';
 import { UploadPreview } from './SelectImage';
 import { GalleryPhotos } from './GalleryPhotos';
+import { ImageFolder } from '../globalVariables';
 
 export async function getImageURLs() {
-  const listRef = ref(storage, 'betphotos/');
+  const listRef = ref(storage, ImageFolder);
   const result = await listAll(listRef);
   
   const urlPromises = result.items.map((itemRef) => getDownloadURL(itemRef));
@@ -49,8 +50,9 @@ export const FirebaseUploads = () => {
     event.preventDefault();
     const file = event.target[0]?.files[0];
     if (!file) return;
-
-    const storageRef = ref(storage, `betphotos/${file.name}`);
+    const uniqueId = crypto.randomUUID(); // ou qualquer gerador único
+    const filename = `${Date.now()}_${uniqueId}.jpg`;
+    const storageRef = ref(storage, `${ImageFolder}${filename}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -72,7 +74,7 @@ export const FirebaseUploads = () => {
   const loadImages = async () => {
     const urls = await getImageURLs();
     console.log('-->>',urls)
-    const imagesRef = ref(storage, 'betphotos/');
+    const imagesRef = ref(storage, ImageFolder);
     try {
       console.log('clicked')
       console.log(imagesRef)
