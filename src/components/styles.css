@@ -1,3 +1,10 @@
+.infodiv{
+  transition: all 1s ease;
+  opacity: 1;
+}
+.infodiv.dontshow{
+  opacity: 0;
+}
 .upphotos {
     display: flex;  /* Certifique-se de que o elemento seja um bloco */
     flex-direction: column;
@@ -16,11 +23,7 @@
 
     gap: 10px;
 }
-@media (max-width: 400px) {
-    .upphotos{
-        padding: 40px 10px;
-    }
-}
+
 .upphotos.expanded {
     opacity: 100%;
     left: 0;
@@ -61,6 +64,7 @@
     flex-direction: column;
     background-color: rgba(255,255,255,0);
     transition: all 200ms ease;
+    min-width: 150px;
     height: 152px;
   }
   .image-container button{

@@ -23,12 +23,20 @@ const excluirImagemPorUrl = async (url) => {
   }
 };
 
+const loadNumberOfImages = (images, number) => {
+  var arrayOfImages = [];
+  for(var i=0; i<number && i<images.length; i++){
+    arrayOfImages.push(images[i]);
+  }
+
+  return arrayOfImages;
+}
 export const GalleryPhotos = ({ imagesUrls, admin }) => {
   const [showModal, setShowModal] = useState(false);
   const [slideMode, setSlideMode] = useState(false);
   const [photoIndex, setPhotoIndex] = useState();
   const [images, setImages] = useState([]);
-
+  const [loadNumber, setLoadNumber] = useState(8);
   useEffect(() => {
     if (slideMode) {
       const timer = setTimeout(() => {
@@ -49,7 +57,8 @@ export const GalleryPhotos = ({ imagesUrls, admin }) => {
   // Memoriza a renderização da grade
   const galleryGrid = useMemo(() => {
     if (!images) return null;
-    return images.map((url, index) => (
+    
+    return loadNumberOfImages(images, loadNumber).map((url, index) => (
       <div key={index} className="image-container">
         <img
           src={url}
@@ -66,10 +75,11 @@ export const GalleryPhotos = ({ imagesUrls, admin }) => {
         </>}
       </div>
     ));
-  }, [images, admin]);
+  }, [images, admin, loadNumber]);
 
   return (
     <>
+    
       {images && (
         <>
           {showModal && (
@@ -88,7 +98,16 @@ export const GalleryPhotos = ({ imagesUrls, admin }) => {
               </div>
             </div>
           )}
-          <div className="gallery-grid">{galleryGrid}</div>
+          <div onScroll={(e) => {
+            const element = e.target;
+            console.log("scrollTop:", element.scrollTop);
+            console.log("scrollHeight:", element.scrollHeight);
+            console.log("clientHeight:", element.clientHeight);
+
+            if (element.scrollTop + element.clientHeight >= element.scrollHeight - 5) {
+              if(loadNumber < images.length)setLoadNumber(loadNumber + 16);
+            }
+          }} className="gallery-grid">{galleryGrid}</div>
         </>
       )}
     </>

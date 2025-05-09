@@ -11,7 +11,7 @@ const copiarTexto = async (texto) => {
 
   
 
-export const QrCode = () => {
+export const QrCode = ({expanded}) => {
     const code = '00020126330014BR.GOV.BCB.PIX0111118727966805204000053039865802BR5924Beatriz Vitoria Ferreira6009SAO PAULO62140510vtz3l6j4gu6304C3E0';
     const [clicked, setClicked] = useState(false);
     const [changeImg, setChangeImg] = useState(0);
@@ -58,14 +58,16 @@ export const QrCode = () => {
     {/* <img alt="" className="imaged" src="images/bg.png"/> */}
     
     <br />
-    <div style={{width: '300px'}}>
-    <h3>
-      Presenteie com PIX
+    {
+      <div className={`infodiv ${expanded ? '' : 'dontshow'}`}>
+      <div style={{width: '300px'}}>
+      <h3>
+        Presenteie com PIX
       </h3>
-    <p>
-    Se quiser nos presentear com algo especial, preparamos um QR Code exclusivo para PIX.
-    Qualquer valor será recebido com muito carinho e gratidão.
-    </p>
+      <p>
+        Se quiser nos presentear com algo especial, preparamos um QR Code exclusivo para PIX.
+        Qualquer valor será recebido com muito carinho e gratidão.
+      </p>
 
     </div>
     <br />
@@ -77,13 +79,15 @@ export const QrCode = () => {
       
     }} alt='pix' className={`qrcode ${isExtra ? 'extraWidth' : ''}`} src={`images/qrcode.png`}/>
         <br/>
-        <p>clique no qr code para copiar e expandir</p>
+        <p>Clique no QR code para copiar e expandir</p>
         <br />
         {clicked && <p style={{position: 'absolute', bottom: '100px'}}>
             Link Copiado!
         </p>}
-
+    
     </div>
+    </div>
+    }
       </div>
       
       </div>

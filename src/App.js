@@ -9,8 +9,8 @@ function App() {
 
   <div style={{maxWidth: 600, width: '100%',position: 'relative'}}>
   
-  <button className={`homefoto ${clicked ? '' : 'changepos'}`} onClick={()=>{setClicked(!clicked)}}>{clicked ? 'Home' : 'Fotos'}</button>
-  { <QrCode />}
+  <button className={`homefoto ${clicked ? '' : 'changepos'}`} onClick={()=>{setClicked(!clicked)}}>{clicked ? 'Início' : 'Fotos'}</button>
+  { <QrCode expanded={!clicked}/>}
     <UploadPhotos className={`upphotos ${clicked ? 'expanded' : ''}`}/>
   </div> 
   </div> 
