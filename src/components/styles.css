@@ -47,9 +47,26 @@
     overflow-y: scroll;
   }
   .image-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
     background-color: rgba(255,255,255,0);
     transition: all 200ms ease;
     height: 152px;
+  }
+  .image-container button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 13px;
+    height: 13px;
+    padding: 7px;
+    text-align: center;
+    background-color: red;
+    margin: 2px;
+  }
+  .image-container button:hover{
+    background-color: rgba(255,200,200,1);
   }
   .image-container img {
     width: 100%;

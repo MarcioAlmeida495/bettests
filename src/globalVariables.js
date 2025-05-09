@@ -1,1 +1,2 @@
-export const ImageFolder = 'betphotos/';
+export const ImageFolder = 'outro/';
+export const password = '/*-+';

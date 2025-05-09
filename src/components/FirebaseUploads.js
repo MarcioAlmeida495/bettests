@@ -9,7 +9,7 @@ import { storage } from './firebase';
 import './App.css';
 import { UploadPreview } from './SelectImage';
 import { GalleryPhotos } from './GalleryPhotos';
-import { ImageFolder } from '../globalVariables';
+import { ImageFolder, password } from '../globalVariables';
 
 export async function getImageURLs() {
   const listRef = ref(storage, ImageFolder);
@@ -22,6 +22,7 @@ export async function getImageURLs() {
 }
 
 export const FirebaseUploads = () => {
+  const [pass, setPass] = useState('');
   const [progress, setProgress] = useState(0);
   const [imgURL, setImgURL] = useState('');
   const [images, setImages] = useState([]);
@@ -34,7 +35,7 @@ export const FirebaseUploads = () => {
   },[imgURL])
 
   useEffect(()=>{
-    loadImages();
+    LoadImages();
   },[])
 
   useEffect(()=>{
@@ -65,13 +66,13 @@ export const FirebaseUploads = () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           // setImgURL(url);
-          loadImages();
+          LoadImages();
         });
       }
     );
   };
   
-  const loadImages = async () => {
+  const LoadImages = async () => {
     const urls = await getImageURLs();
     console.log('-->>',urls)
     const imagesRef = ref(storage, ImageFolder);
@@ -91,6 +92,18 @@ export const FirebaseUploads = () => {
 
   return (
     <>
+      <div className='admindiv'>
+        <input style={
+          {
+            margin: '10px',
+            padding: '5px',
+            color: 'black'
+          }
+        } type='password' onChange={(e)=>{setPass(e.target.value); console.log(e.target.value)}} value={pass}/>
+        <button onClick={()=>{
+          document.getElementsByClassName('admindiv')[0].classList.toggle('expandedadmindiv')
+        }} style={{position: 'fixed', top: 0, right: 0}}></button>
+      </div>
       <form onSubmit={handleSubmit} style={{height: 200, width: '150px'}}>
         
         <UploadPreview reset={`${progress === 100 ? true : false}`} getSelectedImage={(file)=>{setFileSelected(file)}}/>
@@ -107,9 +120,9 @@ export const FirebaseUploads = () => {
         </div>
       )}
 
-      <button onClick={loadImages}>Atualizar</button>
+      <button onClick={LoadImages}>Atualizar</button>
 
-      <GalleryPhotos images={images}/>
+      <GalleryPhotos images={images} admin={pass === password}/>
       
       {/* <div className="gallery">
         {images.map((url, i) => (

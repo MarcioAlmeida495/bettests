@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./styles.css";
 
-export const GalleryPhotos = ({ images }) => {
+export const GalleryPhotos = ({ images, admin }) => {
   const [showModal, setShowModal] = useState(false);
   const [slideMode, setSlideMode] = useState(false);
   const [photoIndex, setPhotoIndex] = useState();
@@ -22,7 +22,7 @@ export const GalleryPhotos = ({ images }) => {
   // Memoriza a renderização da grade
   const galleryGrid = useMemo(() => {
     if (!images) return null;
-    return images.map((url, index) => (
+    return images.slice().reverse().map((url, index) => (
       <div key={index} className="image-container">
         <img
           src={url}
@@ -32,9 +32,14 @@ export const GalleryPhotos = ({ images }) => {
           }}
           alt={`Imagem ${index}`}
         />
+        {console.log(typeof admin)}
+        {admin === true && <>
+        {console.log(`${admin} logo entrou`)}
+          <button></button>
+        </>}
       </div>
     ));
-  }, [images]);
+  }, [images, admin]);
 
   return (
     <>

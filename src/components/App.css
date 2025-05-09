@@ -122,7 +122,23 @@ progress{
     opacity: 1;
   }
 }
-
+.admindiv{
+  position: absolute;
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  top: -95vh;
+  align-items: center;
+  background-color: rgba(0,0,0,0);
+  transition: all 200ms ease;
+  z-index: 100;
+}
+.admindiv.expandedadmindiv{
+  margin-top: 95vh;
+  background-color: black;
+  z-index: 2000;
+}
 .close-btn {
   position: absolute;
   z-index: 10000;
