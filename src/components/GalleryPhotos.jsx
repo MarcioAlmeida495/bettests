@@ -1,5 +1,27 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./styles.css";
+import { ref, deleteObject } from "firebase/storage";
+import { storage } from "./firebase"; // ajuste o caminho se necessário
+const excluirImagemPorUrl = async (url) => {
+  try {
+    // Extrai o caminho do arquivo da URL pública
+    const caminho = decodeURIComponent(
+      url.split("/o/")[1].split("?")[0]
+    );
+
+    // Cria a referência no Firebase Storage
+    const imagemRef = ref(storage, caminho);
+
+    // Deleta o arquivo
+    await deleteObject(imagemRef);
+
+    // Retorna sucesso
+    return true;
+  } catch (error) {
+    console.error("Erro ao excluir imagem:", error);
+    return false;
+  }
+};
 
 export const GalleryPhotos = ({ imagesUrls, admin }) => {
   const [showModal, setShowModal] = useState(false);
@@ -40,7 +62,7 @@ export const GalleryPhotos = ({ imagesUrls, admin }) => {
         {console.log(typeof admin)}
         {admin === true && <>
         {console.log(`${admin} logo entrou`)}
-          <button></button>
+          <button onClick={()=>{excluirImagemPorUrl(url).then(setImages(images.filter((image) => url !== image)))}}></button>
         </>}
       </div>
     ));
