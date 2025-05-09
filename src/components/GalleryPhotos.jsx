@@ -36,7 +36,7 @@ export const GalleryPhotos = ({ imagesUrls, admin }) => {
   const [slideMode, setSlideMode] = useState(false);
   const [photoIndex, setPhotoIndex] = useState();
   const [images, setImages] = useState([]);
-  const [loadNumber, setLoadNumber] = useState(8);
+  const [loadNumber, setLoadNumber] = useState(16);
   useEffect(() => {
     if (slideMode) {
       const timer = setTimeout(() => {
