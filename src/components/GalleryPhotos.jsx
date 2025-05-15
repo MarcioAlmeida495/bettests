@@ -84,6 +84,10 @@ export const GalleryPhotos = ({ imagesUrls, admin }) => {
         <>
           {showModal && (
             <div className="modalbackground">
+                <div className="divbutton">
+                  <div className="leftbutton" onClick={()=>{setPhotoIndex(photoIndex-1)}}></div>
+                  <div className="rightbutton" onClick={()=>{setPhotoIndex(photoIndex+1)}}></div>
+                </div>
               <button className="close-btn" onClick={() => setShowModal(false)}>
                 Fechar
               </button>

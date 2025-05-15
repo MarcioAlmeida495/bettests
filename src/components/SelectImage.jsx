@@ -27,12 +27,12 @@ export const UploadPreview = ({getSelectedImage = () => {}, reset}) => {
       {!file && <img className="img-select" onClick={()=>refInput.current.click()} src="camera.png"  alt='test' />}
       <input type="file" ref={refInput} accept="image/*" style={{display: 'none'}} onChange={handleFileChange} />
       {preview && (
-        <div style={{width: 'auto', height:250, position: 'relative'}}>
+        <div style={{width: 'auto', height:550, position: 'relative'}}>
           <button onClick={(e)=>{
             e.preventDefault();
             setFile(null);
             setPreview(null)
-          }} style={{position: 'absolute', top: 0, right: 0}}>x</button>
+          }} className="cancelbutton">X</button>
           <img src={preview} alt="Pré-visualização" style={{ width:  '100%', height:  '150px', objectFit: "cover" }} />
         </div>
       )}

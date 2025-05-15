@@ -53,6 +53,7 @@
 
 .gallery-grid {
     display: grid;
+    max-height: 65%;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     padding: 10px;
@@ -139,4 +140,17 @@
         gap: 12px;
         padding: 10px;
       }
+  }
+
+  .cancelbutton{
+    position:absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(255,100,100,0.8);
+    height: 5px;
+    display: flex;
+    align-items: center;
+  }
+  .cancelbutton:hover{
+    background-color: rgba(205,80,80,1);
   }

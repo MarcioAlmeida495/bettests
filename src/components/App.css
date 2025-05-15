@@ -165,3 +165,21 @@ progress{
 .slidemode-btn:hover{
   background-color: rgba(255,255,255,0.2);
 }
+.leftbutton{
+
+  width: 50%;
+  height: 100vh;
+}
+.rightbutton{
+  width: 50%;
+  height: 100vh;
+}
+.divbutton{
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
